@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#090b12">
+<title>NOIR — Casino Club</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="ambient"></div>
+<header class="topbar">
+<a class="brand" href="#home"><span class="brand-mark">N</span><span>NOIR<small>CASINO CLUB</small></span></a>
+<nav><a class="active" href="#games">Spiele</a><a href="#roulette" onclick="showGame('roulette')">Roulette</a><a href="#about">Info</a></nav>
+<div class="wallet"><span class="coin">✦</span><span id="balanceTop">1.000</span><small>DEMO-CHIPS</small></div>
+</header>
+<main id="home">
+<section class="hero">
+<div class="hero-copy"><div class="eyebrow"><i></i> THE PRIVATE GAME ROOM</div>
+<h1>Play the night.<br><em>Own the moment.</em></h1>
+<p>Ein eleganter Casino-Abend — nur zum Spaß. Spiele mit virtuellen Demo-Chips, ganz ohne Echtgeld.</p>
+<a class="primary-btn" href="#games">Spiele entdecken <span>↗</span></a></div>
+<div class="hero-art"><div class="halo"></div><div class="hero-chip"><span>NOIR</span><b>✦</b><small>EST. 2026</small></div><div class="floating f1">♠</div><div class="floating f2">♦</div><div class="floating f3">♣</div></div>
+<div class="hero-foot"><span>01 / 03</span><span>VIRTUAL PLAY • NO REAL MONEY</span><span>SCROLL TO EXPLORE ↓</span></div>
+</section>
+<section id="games" class="section">
+<div class="section-head"><div><div class="eyebrow">CHOOSE YOUR TABLE</div><h2>Die Spielhalle</h2></div><span class="muted">02 GAMES AVAILABLE</span></div>
+<div class="game-grid">
+<article class="game-card"><div class="game-art roulette-art"><div class="mini-wheel"><div class="wheel-center">N</div></div><span class="tag">MULTIPLAYER*</span></div><div class="game-info"><div><h3>Roulette</h3><p>Spiele gemeinsam an einem Tisch.</p></div><button class="outline-btn" onclick="showGame('roulette')">Spielen ↗</button></div></article>
+<article class="game-card"><div class="game-art slots-art"><div class="slot-preview"><b>7</b><b>✦</b><b>7</b></div><span class="tag">SINGLE PLAYER</span></div><div class="game-info"><div><h3>Neon Slots</h3><p>Drei Walzen. Ein Dreh. Dein Glück.</p></div><button class="outline-btn" onclick="showGame('slots')">Spielen ↗</button></div></article>
+<article class="game-card"><div class="game-art cards-art"><div class="playing-cards"><span>♠</span><span>♥</span></div><span class="tag">COMING SOON</span></div><div class="game-info"><div><h3>Blackjack</h3><p>Die nächste Runde wartet.</p></div><button class="outline-btn" disabled>Bald verfügbar</button></div></article>
+</div><p class="tiny">* Multiplayer-Roulette benötigt den separaten Node.js-Server. Auf GitHub Pages läuft automatisch der lokale Demo-Modus.</p>
+</section>
+<section id="roulette" class="section play-section hidden">
+<div class="section-head"><div><div class="eyebrow">TABLE / 01</div><h2>Roulette</h2></div><button class="text-btn" onclick="showGame('games')">← Zurück</button></div>
+<div class="table-layout"><div class="table-main">
+<div class="room-bar"><div><span class="live-dot"></span> <span id="modeLabel">LOKALER DEMO-TISCH</span> <b id="roomLabel">LOBBY</b></div><div class="room-controls"><input id="roomInput" maxlength="10" placeholder="Tisch-Code"><button class="small-btn" id="joinBtn">Beitreten</button></div></div>
+<div class="roulette-table"><div class="wheel-display"><div class="wheel-ring"><div class="wheel-number" id="resultNumber">—</div></div><div class="wheel-caption" id="resultText">Setze deine Demo-Chips</div></div>
+<div class="bet-board"><button class="bet-cell green" data-type="number" data-value="0">0</button><div class="number-grid" id="numberGrid"></div><div class="outside-bets"><button class="bet-cell red" data-type="red">ROT <small>1:1</small></button><button class="bet-cell black" data-type="black">SCHWARZ <small>1:1</small></button><button class="bet-cell neutral" data-type="even">GERADE <small>1:1</small></button><button class="bet-cell neutral" data-type="odd">UNGERADE <small>1:1</small></button></div></div></div>
+<div class="bet-controls"><label>Einsatz <input id="betAmount" type="number" min="1" max="1000" value="25"></label><span class="muted" id="betHint">Wähle ein Feld auf dem Tisch.</span><button id="spinBtn" class="primary-btn" disabled>Runde starten ↗</button></div><div id="notice" class="notice">Demo-Modus wird gestartet …</div>
+</div><aside class="side-panel"><h3>Am Tisch <span id="playerCount">1</span></h3><div id="playersList" class="players-list"></div><div class="divider"></div><h3>Deine Einsätze</h3><div id="myBets" class="my-bets">Noch keine Einsätze</div><p class="tiny">Lokaler Demo-Modus: Spielstände bleiben nur in diesem Browser-Tab erhalten.</p></aside></div>
+</section>
+<section id="slots" class="section play-section hidden"><div class="section-head"><div><div class="eyebrow">SOLO GAME / 02</div><h2>Neon Slots</h2></div><button class="text-btn" onclick="showGame('games')">← Zurück</button></div>
+<div class="slot-machine"><div class="slot-top">NOIR <span>✦</span> SLOTS</div><div class="reels"><div id="reel1">7</div><div id="reel2">✦</div><div id="reel3">7</div></div><p id="slotMessage">Drei gleiche Symbole = großer Gewinn.</p><div class="slot-actions"><label>Einsatz <input id="slotBet" type="number" min="1" max="1000" value="20"></label><button id="slotSpin" class="primary-btn">DREHEN ↗</button></div><div class="paytable"><span>7 7 7 <b>×10</b></span><span>✦ ✦ ✦ <b>×8</b></span><span>Gleiche Symbole <b>×3</b></span><span>Zwei gleiche <b>×1,5</b></span></div></div></section>
+<section id="about" class="about-strip"><div><div class="eyebrow">A NOTE FROM THE HOUSE</div><h2>Nur ein Spiel.<br><em>Nur zum Spaß.</em></h2></div><p>NOIR ist ein privates Demo-Projekt. Es gibt keine Einzahlungen, Auszahlungen, Echtgeld-Preise oder echten Glücksspiel-Funktionen. Alle Chips sind virtuell und haben keinen Geldwert.</p></section>
+</main>
+<footer><span class="brand">NOIR <small>CASINO CLUB</small></span><span>© 2026 NOIR DEMO</span><span>VIRTUAL CREDITS ONLY</span></footer>
+<script src="/socket.io/socket.io.js"></script>
+<script src="app.js"></script>
+</body></html>
